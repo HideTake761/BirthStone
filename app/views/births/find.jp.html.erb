@@ -1,0 +1,28 @@
+<h1>あなたの誕生石、誕生花は？</h1>
+
+<p>調べたい月の数字、または石の名前、花の名前で検索できます</p>
+<%= link_to "English ver.", "/" %>
+<br>
+<br>
+
+<table>
+    <%= form_for :post, url: "/births/find?locale=jp" do |f| %>
+    <tr><th><%= text_field_tag("find") %></th>
+    <th><%= submit_tag("Click") %></th></tr>
+    <% end %>
+</table>
+<br>
+
+<table>
+    <tr>
+        <th>月</th><th>誕生石</th><th>誕生花</th>
+    </tr>
+    <% @births.each do |obj| %>
+    <tr>
+        <td><%= obj.month %></td>
+        <td><%= obj.stone_jp %></td>
+        <td><%= obj.flower_jp %></td>
+    </tr>
+    <% end %>
+</table>
+

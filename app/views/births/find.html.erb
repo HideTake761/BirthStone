@@ -1,0 +1,26 @@
+<h1>Find your birth stone and birth flower!</h1>
+
+<h3>You can search by the number of the month, the name of the stone or the flower 
+you'd like to look for</h3>
+<h4><%= link_to "日本語バージョン", "/?locale=jp" %></h4>
+
+<table>
+    <%= form_for :post, url: "/births/find" do |f| %>
+    <tr><th><%= text_field_tag("find") %></th>
+    <th><%= submit_tag("Click") %></th></tr>
+    <% end %>
+</table>
+<br>
+
+<table>
+    <tr>
+        <th>Month</th><th>Birth Stone</th><th>Birth Flower</th>
+    </tr>
+    <% @births.each do |obj| %>
+    <tr>
+        <td><%= obj.month %></td>
+        <td><%= obj.stone %></td>
+        <td><%= obj.flower %></td>
+    </tr>
+    <% end %>
+</table>
